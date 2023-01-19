@@ -1,0 +1,11 @@
+.w_container {
+  background-color: var(--white);
+  padding: 1.5rem;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.container {
+  display: grid;
+  row-gap: 1.5rem;
+}
