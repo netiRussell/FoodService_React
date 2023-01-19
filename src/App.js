@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 
 import Header from "./components/Header/Header";
 import AboutUs from "./components/AboutUs/AboutUs";
@@ -14,7 +15,7 @@ function App() {
       <AboutUs />
       <ItemsList />
       <Footer />
-      <Backdrop />
+      {ReactDOM.createPortal(<Backdrop />, document.querySelector("body"))}
     </React.Fragment>
   );
 }
