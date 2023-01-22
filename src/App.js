@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import ReactDOM from "react-dom";
 import CartContext from "./store/cart-context";
 
@@ -8,7 +8,11 @@ import ItemsList from "./components/ItemsList/ItemsList";
 import Footer from "./components/Footer/Footer";
 import CartModal from "./components/CartModal/CartModal";
 
-const data = [{ id: 1, status: "default", name: "Example", description: "This is an example of a dish that can be ordered here", price: 10, amount: 1 }];
+const data = [
+  { id: 1, status: "default", name: "Example1", description: "This is an example of a dish that can be ordered here", price: 10.2, amount: 1 },
+  { id: 2, status: "default", name: "Example2", description: "This is an example of a dish that can be ordered here", price: 10.23, amount: 1 },
+  { id: 3, status: "default", name: "Example3", description: "This is an example of a dish that can be ordered here", price: 10, amount: 1 },
+];
 
 const cartReducer = function (prevValue, dispatchedValue) {
   switch (dispatchedValue.type) {
@@ -21,10 +25,11 @@ const cartReducer = function (prevValue, dispatchedValue) {
 
 function App() {
   const [cartState, cartStateDispatch] = useReducer(cartReducer, { cartItems: [], isShown: false });
+  const [allItems, setAllItems] = useState(data);
 
   return (
     <React.Fragment>
-      <CartContext.Provider value={{ cartItems: cartState.cartItems, isShown: cartState.isShown, cartStateDispatch: cartStateDispatch }}>
+      <CartContext.Provider value={{ cartItems: cartState.cartItems, isShown: cartState.isShown, cartStateDispatch: cartStateDispatch, allItems: allItems, setAllItems: setAllItems }}>
         <Header />
         <AboutUs />
         <ItemsList />

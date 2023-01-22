@@ -1,11 +1,18 @@
-import SingleItem from "./SingleItem/Content/SingleItem";
 import styles from "./ItemsList.module.css";
+import { useContext } from "react";
+import CartContext from "../../store/cart-context";
 
-function ItemsList() {
+import SingleItem from "./SingleItem/Content/SingleItem";
+
+function ItemsList({ data }) {
+  const ctx = useContext(CartContext);
+
   return (
     <section className={`container ${styles.w_container}`}>
       <ul className={styles.container}>
-        <SingleItem productName={"Example"} description={"This is an example of a dish that can be ordered here"} price={10} id="1" />
+        {ctx.allItems.map((value) => {
+          return <SingleItem id={value.id} key={value.id} productName={value.name} description={value.description} price={value.price} amount={value.amount} />;
+        })}
       </ul>
     </section>
   );
