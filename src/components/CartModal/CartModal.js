@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./CartModal.module.css";
+import CartContext from "../../store/cart-context";
 
 import SingleItem from "./SingleItem/SingleItem";
 import Backdrop from "./Backdrop/Backdrop";
 
 function CartModal() {
+  const ctx = useContext(CartContext);
+
   return (
     <React.Fragment>
       <form className={styles.modal}>
@@ -20,12 +23,18 @@ function CartModal() {
           <button className={`button ${styles.button} ${styles.submit}`} type="submit">
             Order
           </button>
-          <button className={`button ${styles.button} ${styles.close}`} type="button">
+          <button
+            className={`button ${styles.button} ${styles.close}`}
+            type="button"
+            onClick={() => {
+              ctx.cartStateDispatch({ type: "CART_TOGGLE" });
+            }}
+          >
             Close
           </button>
         </div>
       </form>
-      <Backdrop></Backdrop>
+      <Backdrop cartStateDispatch={ctx.cartStateDispatch}></Backdrop>
     </React.Fragment>
   );
 }
