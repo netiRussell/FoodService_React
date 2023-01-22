@@ -1,9 +1,12 @@
+import React from "react";
 import styles from "./CartModal.module.css";
-import SingleItem from "./SingleItem/SingleItem";
 
-function Backdrop() {
+import SingleItem from "./SingleItem/SingleItem";
+import Backdrop from "./Backdrop/Backdrop";
+
+function CartModal() {
   return (
-    <div className={styles.backdrop}>
+    <React.Fragment>
       <form className={styles.modal}>
         <SingleItem name="Example" price={10} amount={2} />
         <SingleItem name="Example" price={10} amount={2} />
@@ -22,8 +25,9 @@ function Backdrop() {
           </button>
         </div>
       </form>
-    </div>
+      <Backdrop></Backdrop>
+    </React.Fragment>
   );
 }
 
-export default Backdrop;
+export default CartModal;
