@@ -5,7 +5,7 @@ function SingleItem({ name, price, amount }) {
     <div className={styles.container}>
       <div className="item_info">
         <p className="name">{name}</p>
-        <p className="price">${price} ($20.00)</p>
+        <p className="price">${price.toFixed(2)} ($20.00)</p>
       </div>
       <div className={`item_info ${styles.container_buttons}`}>
         <input className={styles.input_number} type="number" min="1" max="10" defaultValue={amount} />

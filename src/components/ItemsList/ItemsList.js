@@ -11,7 +11,7 @@ function ItemsList({ data }) {
     <section className={`container ${styles.w_container}`}>
       <ul className={styles.container}>
         {ctx.allItems.map((value) => {
-          return <SingleItem id={value.id} key={value.id} productName={value.name} description={value.description} price={value.price} amount={value.amount} />;
+          return <SingleItem id={value.id} key={value.id} status={value.status} productName={value.name} description={value.description} price={value.price} amount={value.amount} />;
         })}
       </ul>
     </section>

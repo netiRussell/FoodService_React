@@ -11,9 +11,7 @@ function CartModal() {
   return (
     <React.Fragment>
       <form className={styles.modal}>
-        <SingleItem name="Example" price={10} amount={2} />
-        <SingleItem name="Example" price={10} amount={2} />
-        <SingleItem name="Example" price={10} amount={2} />
+        {ctx.cartItems.length > 0 ? ctx.cartItems.map((value) => <SingleItem key={value.id} id={value.id} name={value.name} price={value.price} amount={value.amount} />) : <p>Nothing is added to the cart yet</p>}
 
         <div className={styles.container_order}>
           <hr className={`line ${styles.line}`} />

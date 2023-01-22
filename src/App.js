@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer, useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import CartContext from "./store/cart-context";
 
@@ -18,6 +18,8 @@ const cartReducer = function (prevValue, dispatchedValue) {
   switch (dispatchedValue.type) {
     case "CART_TOGGLE":
       return { cartItems: prevValue.cartItems, isShown: !prevValue.isShown };
+    case "ADD_TO_CART":
+      return { cartItems: [...prevValue.cartItems, dispatchedValue.item], isShown: prevValue.isShown };
     default:
       return { cartItems: prevValue.cartItems, isShown: prevValue.isShown };
   }
@@ -26,6 +28,10 @@ const cartReducer = function (prevValue, dispatchedValue) {
 function App() {
   const [cartState, cartStateDispatch] = useReducer(cartReducer, { cartItems: [], isShown: false });
   const [allItems, setAllItems] = useState(data);
+
+  useEffect(() => {
+    console.log(cartState);
+  }, [cartState]);
 
   return (
     <React.Fragment>

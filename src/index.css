@@ -47,6 +47,10 @@ input {
   display: none;
 }
 
+.invalid_input {
+  background-color: #f7cbcb;
+}
+
 .container {
   max-width: 950px;
   margin: 3rem auto;
