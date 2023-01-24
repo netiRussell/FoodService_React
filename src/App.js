@@ -20,12 +20,28 @@ const cartReducer = function (prevValue, dispatchedValue) {
       return { cartItems: prevValue.cartItems, isShown: !prevValue.isShown };
     case "ADD_TO_CART":
       return { cartItems: [...prevValue.cartItems, dispatchedValue.item], isShown: prevValue.isShown };
+    case "CHANGE_QUANTITY":
+      return {
+        cartItems: prevValue.cartItems.map((value) => {
+          if (value.id === dispatchedValue.id) {
+            value.amount = dispatchedValue.amount;
+          }
+
+          return value;
+        }),
+        isShown: prevValue.isShown,
+      };
     default:
       return { cartItems: prevValue.cartItems, isShown: prevValue.isShown };
   }
 };
 
 function App() {
+  /* Logic of this app implies not changing amount of an item in allItems state 
+  while changing the amount for cartItems array since items in cart do need to 
+  maintain a certain amount. Amount of an item from allItems wouldn't matter if
+  the copy of this item is in the cart at the moment */
+
   const [cartState, cartStateDispatch] = useReducer(cartReducer, { cartItems: [], isShown: false });
   const [allItems, setAllItems] = useState(data);
 

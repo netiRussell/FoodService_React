@@ -1,19 +1,40 @@
 import styles from "./SingleItem.module.css";
+import { useState, useEffect } from "react";
 
-function SingleItem({ name, price, amount }) {
+function SingleItem({ id, name, price, defaultAmount, cartStateDispatch }) {
+  const [amountState, setAmountState] = useState(defaultAmount);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      cartStateDispatch({ type: "CHANGE_QUANTITY", id: id, amount: amountState });
+    }, 500);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [amountState, cartStateDispatch, id]);
+
   return (
     <div className={styles.container}>
       <div className="item_info">
         <p className="name">{name}</p>
-        <p className="price">${price.toFixed(2)} ($20.00)</p>
+        <p className="price">
+          ${price.toFixed(2)} (${(price * amountState).toFixed(2)})
+        </p>
       </div>
       <div className={`item_info ${styles.container_buttons}`}>
-        <input className={styles.input_number} type="number" min="1" max="10" defaultValue={amount} />
+        <input
+          className={styles.input_number}
+          type="number"
+          min="1"
+          max="10"
+          value={amountState}
+          onChange={(event) => {
+            setAmountState(event.target.value);
+          }}
+        />
         <button type="button" className={`button ${styles.button}`}>
-          <i className="fa-solid fa-plus"></i>
-        </button>
-        <button type="button" className={`button ${styles.button}`}>
-          <i className="fa-solid fa-minus"></i>
+          <i class="fa-solid fa-trash-can"></i>
         </button>
       </div>
     </div>

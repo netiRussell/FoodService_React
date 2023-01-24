@@ -23,8 +23,9 @@ function AddForm({ id, defaultAmount }) {
         prevValue.map((value) => {
           if (value.id === id) {
             value.status = "cart";
-            value.amount = amount;
-            ctx.cartStateDispatch({ type: "ADD_TO_CART", item: value });
+            const newValue = value;
+            newValue.amount = amount;
+            ctx.cartStateDispatch({ type: "ADD_TO_CART", item: newValue });
           }
 
           return value;
