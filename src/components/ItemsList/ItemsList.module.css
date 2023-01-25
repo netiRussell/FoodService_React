@@ -3,6 +3,14 @@
   padding: 1.5rem;
   box-sizing: border-box;
   border-radius: 5px;
+  transition: 1.5s all;
+  opacity: 0.2;
+  margin-top: 4rem !important;
+}
+
+.show_w_container {
+  opacity: 1;
+  margin-top: 0 !important;
 }
 
 .container {
