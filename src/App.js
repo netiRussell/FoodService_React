@@ -12,6 +12,7 @@ const data = [
   { id: 1, status: "default", name: "Example1", description: "This is an example of a dish that can be ordered here", price: 10.2, amount: 1 },
   { id: 2, status: "default", name: "Example2", description: "This is an example of a dish that can be ordered here", price: 10.23, amount: 1 },
   { id: 3, status: "default", name: "Example3", description: "This is an example of a dish that can be ordered here", price: 10, amount: 1 },
+  { id: 4, status: "default", name: "Sushi", description: "This is an example of a dish that can be ordered here", price: 10, amount: 1 },
 ];
 
 const cartReducer = function (prevValue, dispatchedValue) {
