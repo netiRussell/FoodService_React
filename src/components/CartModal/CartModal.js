@@ -12,7 +12,7 @@ function CartModal() {
     <React.Fragment>
       <form className={styles.modal}>
         {ctx.cartItems.length > 0 ? (
-          ctx.cartItems.map((value) => <SingleItem key={value.id} id={value.id} name={value.name} price={value.price} defaultAmount={value.amount} cartStateDispatch={ctx.cartStateDispatch} />)
+          ctx.cartItems.map((value) => <SingleItem key={value.id} id={value.id} name={value.name} price={value.price} defaultAmount={value.amount} cartStateDispatch={ctx.cartStateDispatch} setAllItems={ctx.setAllItems} />)
         ) : (
           <p>Nothing is added to the cart yet</p>
         )}

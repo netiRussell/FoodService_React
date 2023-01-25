@@ -20,6 +20,11 @@ const cartReducer = function (prevValue, dispatchedValue) {
       return { cartItems: prevValue.cartItems, isShown: !prevValue.isShown };
     case "ADD_TO_CART":
       return { cartItems: [...prevValue.cartItems, dispatchedValue.item], isShown: prevValue.isShown };
+    case "REMOVE_ITEM":
+      return {
+        cartItems: prevValue.cartItems.filter((value) => value.id !== dispatchedValue.id),
+        isShown: prevValue.isShown,
+      };
     case "CHANGE_QUANTITY":
       return {
         cartItems: prevValue.cartItems.map((value) => {
